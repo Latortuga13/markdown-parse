@@ -11,7 +11,6 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             if(nextOpenBracket == -1 || nextCloseBracket == -1){
@@ -23,9 +22,15 @@ public class MarkdownParse {
             }
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(openParen == -1 || closeParen == -1){
+                break;
+            }
+            if(openParen - 1 == nextCloseBracket){
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
             currentIndex = closeParen + 1;
         }
+        
         return toReturn;
     }
     public static void main(String[] args) throws IOException {

@@ -21,15 +21,20 @@ public class MarkdownParseTest {
         assertEquals(links, expect);
     }
     @Test
-    public void testFile2() throws IOException {
-        String contents= Files.readString(Path.of("./test-file2.md"));
+    public void testFile5() throws IOException {
+        String contents= Files.readString(Path.of("./test-file3.md"));
         List<String> expect = List.of();
-        assertEquals(MarkdownParse.getLinks(contents), expect);
+        assertEquals(expect, MarkdownParse.getLinks(contents));
     }
     @Test
     public void testFile3() throws IOException {
-        String contents= Files.readString(Path.of("./test-file2.md"));
+        String contents= Files.readString(Path.of("./test-file5.md"));
         List<String> expect = List.of();
         assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    public void testFile7() throws IOException {
+        String contents= Files.readString(Path.of("./test-file7.md"));
+        List<String> expect = List.of();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 }
